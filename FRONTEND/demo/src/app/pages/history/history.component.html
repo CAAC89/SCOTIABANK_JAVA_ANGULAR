@@ -1,0 +1,176 @@
+<div class="desktop">
+    <div class="imageBlue">
+        <img src="/images/samla-logo-white.png" class="samlaLogo" alt="samlaLogo">
+        <div class="logout" (click)="logout()">
+            <img src="/images/logout.png" class="logout-image" alt="logout">
+        </div>
+    </div>
+    <label class="title">Historial de registro</label>
+    <!-- Mensaje de carga -->
+    <div *ngIf="cargando" class="alert alert-info">Cargando usuarios...</div>
+    <table *ngIf="!cargando && usuarios.length > 0" class="table">
+        <colgroup>
+            <col class="col" />
+            <col class="col" />
+            <col class="col" />
+            <col class="col" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="header">
+                    <label class="title-header">
+                        Nombres y apellidos
+                    </label>
+                </th>
+                <th class="header d-none d-md-table-cell"><label class="title-header">
+                        Correo Electrónico
+                    </label> </th>
+                <th class="header d-none d-md-table-cell"><label class="title-header">
+                        Numero Telefonico
+                    </label></th>
+                <th class="header"><label class="title-header">
+                        Acciones
+                    </label></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of paginatedUsuarios(); let i = index">
+                <td [ngClass]="{'cell-first': i === 0, 'cell-generic': i !== 0}">
+                    <label class="text-black">
+                        {{ usuario.nombre + " " + usuario.apellido }}
+                    </label>
+                </td>
+                <td class="d-none d-md-table-cell" [ngClass]="{'cell-first': i === 0, 'cell-generic': i !== 0}">
+                    <label class="text-gray">
+                        {{ usuario.email }}
+                    </label>
+                </td>
+                <td class="d-none d-md-table-cell" [ngClass]="{'cell-first': i === 0, 'cell-generic': i !== 0}">
+                    <label class="text-gray">
+                        {{ usuario.telefono }}
+                    </label>
+                </td>
+                <td [ngClass]="{'cell-first': i === 0, 'cell-generic': i !== 0}">
+                    <button class="button-action" (click)="openModal(usuario)">
+                        <label class="button-action-text">
+                            Ver detalle
+                        </label>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Paginación con flechas y números de página -->
+    <div class="pagination-container">
+        <button class="pagination-button" (click)="previousPage()" [disabled]="currentPage === 1">
+            <span class="pagination-arrow">&lt;</span>
+        </button>
+        
+        <!-- Números de página -->
+        <ng-container *ngFor="let page of pages()">
+            <button 
+                class="pagination-number" 
+                [class.active]="currentPage === page"
+                (click)="goToPage(page)">
+                {{ page }}
+            </button>
+        </ng-container>
+
+        <button class="pagination-button" (click)="nextPage()" [disabled]="currentPage === totalPages()">
+            <span class="pagination-arrow">&gt;</span>
+        </button>
+    </div>
+    <!-- Modal de detalle -->
+    <div *ngIf="modalOpen" class="modal-history" tabindex="-1" role="dialog">
+        <div role="document"> 
+            <div class="modal-content">
+                <div>
+                    <h5 class="modal-title">{{ selectedUsuario.nombre }} {{ selectedUsuario.apellido }}</h5>
+                    <div   (click)="closeModal()" class="modal-history-close" aria-label="Close">
+                        <img src="/images/close.png" class="modal-history-close-button" alt="close">
+                    </div>
+                </div>
+                <div class="modal-history-frame-container">
+                    <div class="modal-history-frame-left">
+                        <!-- contenido de la izquierda -->
+                        <div class="modal-history-frame-left-layout">
+                            <div class="modal-history-frame-left-layout-header">
+                                <div class="modal-history-frame-left-layout-header-text">
+                                    Correo Electronico
+                                </div>
+                                <div class="modal-history-frame-left-layout-header-text-data">
+                                    {{selectedUsuario.email}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-history-frame-left-layout">
+                            <div class="modal-history-frame-left-layout-header">
+                                <div class="modal-history-frame-left-layout-header-text">
+                                    Numero de teléfono
+                                </div>
+                                <div class="modal-history-frame-left-layout-header-text-data">
+                                    {{selectedUsuario.telefono}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-history-frame-left-layout">
+                            <div class="modal-history-frame-left-layout-header">
+                                <div class="modal-history-frame-left-layout-header-text">
+                                    Tipo de documento
+                                </div>
+                                <div class="modal-history-frame-left-layout-header-text-data">
+                                    {{selectedUsuario.tipoIdentificacion}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-history-frame-left-layout">
+                            <div class="modal-history-frame-left-layout-header">
+                                <div class="modal-history-frame-left-layout-header-text">
+                                    Número de documento
+                                </div>
+                                <div class="modal-history-frame-left-layout-header-text-data">
+                                    {{selectedUsuario.numeroIdentificacion}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-history-frame-right">
+                        <!-- contenido de la derecha -->
+                        <div class="modal-history-frame-right-layout">
+                            <div class="modal-history-frame-right-layout-header-text">
+                                Departamento
+                            </div>
+                            <div class="modal-history-frame-right-layout-header-text-data">
+                                {{selectedHousing.departamento}}
+                            </div>
+                        </div>
+                        <div class="modal-history-frame-right-layout">
+                            <div class="modal-history-frame-right-layout-header-text">
+                                Municipio
+                            </div>
+                            <div class="modal-history-frame-right-layout-header-text-data">
+                                {{selectedHousing.municipio}}
+                            </div>
+                        </div>
+                        <div class="modal-history-frame-right-layout">
+                            <div class="modal-history-frame-right-layout-header-text">
+                                Dirección
+                            </div>
+                            <div class="modal-history-frame-right-layout-header-text-data">
+                                {{selectedHousing.direccion}}
+                            </div>
+                        </div>
+                        <div class="modal-history-frame-right-layout">
+                            <div class="modal-history-frame-right-layout-header-text">
+                                Ingresos mensuales
+                            </div>
+                            <div class="modal-history-frame-right-layout-header-text-data">
+                                {{"$ "+selectedHousing.ingresosMensuales}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="desktop">
+    <div class="barra"></div>
+    <div class="left" (click)="onCancel()">
+        <img src="/images/arrow_left_alt.png" class="left-icon">
+    </div>
+    <img src="/images/samla-logo.png" class="logo" alt="samla logo">
+    <label class="title">Datos de vivienda</label>
+    <form [formGroup]="housingForm" (ngSubmit)="onSubmit()">
+        <div class="frame">
+            <div class="formGroup">
+                <label class="formGrouplabel" for="departamento">Departamento</label>
+                <select id="departamento" name="departamento" formControlName="departamento">
+                    <option value="">Seleccionar</option>
+                    <option value="Managua">Managua</option>
+                    <option value="Granada">Granada</option>
+                    <option value="Matagalpa">Matagalpa</option>
+                </select>
+                <div class="layout-helptext"
+                    *ngIf="housingForm.get('departamento')?.errors?.['required'] && housingForm.get('departamento')?.touched">
+                    <p class="helptext">Debe seleccionar el departamento</p>
+                </div>
+            </div>
+            <div class="formGroup">
+                <label class="formGrouplabel" for="municipio">Municipio</label>
+                <select id="municipio" name="municipio" formControlName="municipio">
+                    <option value="">Seleccionar</option>
+                    <option value="Managua">Carazo</option>
+                    <option value="Granada">La rivera</option>
+                    <option value="Matagalpa">Los chiles</option>
+                </select>
+                <div class="layout-helptext"
+                    *ngIf="housingForm.get('municipio')?.errors?.['required'] && housingForm.get('municipio')?.touched">
+                    <p class="helptext">Debe seleccionar el municipio</p>
+                </div>
+            </div>
+            <div class="formGroup">
+                <label class="formGrouplabel" for="direccion">Direccion</label>
+                <select id="direccion" name="direccion" formControlName="direccion">
+                    <option value="">Seleccionar</option>
+                    <option value="Central">Direccion central</option>
+                    <option value="Oeste">Direccion oeste</option>
+                    <option value="Norte">Direccion norte</option>
+                </select>
+                <div class="layout-helptext"
+                    *ngIf="housingForm.get('direccion')?.errors?.['required'] && housingForm.get('direccion')?.touched">
+                    <p class="helptext">Debe escribir la direccion</p>
+                </div>
+            </div>
+            <div class="formGroup">
+                <label class="formGrouplabel" for="ingresos">Ingresos mensuales</label>
+                <input type="text" id="ingresos" name="ingresos" placeholder="$0.00"
+                    formControlName="ingresosMensuales">
+                <div class="layout-helptext"
+                    *ngIf="housingForm.get('ingresosMensuales')?.errors?.['required'] && housingForm.get('ingresosMensuales')?.touched">
+                    <p class="helptext">Debe escribir el ingreso mensual</p>
+                </div>
+                <div class="layout-helptext"
+                    *ngIf="housingForm.get('ingresosMensuales')?.errors?.['pattern'] && housingForm.get('ingresosMensuales')?.touched">
+                    <p class="helptext">El ingreso mensual debe ser un número válido</p>
+                </div>
+            </div>
+        </div>
+        <button class="cancelButton" type="button" (click)="onCancel()">Cancelar</button>
+        <button class="submitButton" type="submit">Continuar</button>
+        <!-- Error de servidor -->
+        <div *ngIf="serverOk" class="server-ok">
+            <p class="ok-message">{{ serverOk }}</p>
+        </div>
+        <!-- Error de servidor -->
+        <div *ngIf="serverError" class="server-error">
+            <p class="error-message">{{ serverError }}</p>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,373 @@
+.desktop {
+    width: 1440px;
+    height: 1024px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    top: 299px;
+    left: 236px;
+    border-radius: 16px;
+    background: #FFFF;
+}
+
+.imageBlue {
+    width: 728px;
+    height: 1024px;
+    background:
+        url('/images/backgroudcolor.png') center/cover no-repeat;
+    mix-blend-mode: multiply;
+    background-size: cover;
+    background-position: center;
+}
+
+.content {
+    width: 728px;
+    height: 1024px;
+    background: #FFFFFF;
+    mix-blend-mode: multiply;
+    background-size: cover;
+    background-position: center;
+}
+
+.centeredImage {
+    position: absolute;
+    width: 559px;
+    height: 740px;
+    top: 142px;
+    left: 85px;
+    border-radius: 24px;
+}
+
+.ellipseOverlay {
+    position: absolute;
+    width: 79px;
+    height: 79px;
+    top: 381px;
+    left: 44px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.thunder {
+    width: 42px;
+    height: 42px;
+    top: 399px;
+    left: 63px;
+}
+
+.samlaLogo {
+    width: 129px;
+    height: 32.45px;
+    top: 165px;
+    left: 829px;
+    position: absolute;
+}
+
+.registroLabel {
+    width: 499px;
+    height: 19px;
+    top: 242px;
+    left: 829px;
+    color: black;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0.25px;
+    position: absolute;
+}
+
+.frame {
+    width: 499px;
+    height: 660px;
+    position: absolute;
+    top: 281px;
+    left: 829px;
+    display: flex;
+    gap: 50px;
+}
+
+.registroForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.formGrouplabel,
+.formGrouplabelBlue,
+.formGrouplabelRed {
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 5px;
+    height: 20px;
+    letter-spacing: 0.5px;
+    /* Corrección del valor */
+}
+
+.formGrouplabel {
+    color: black;
+}
+
+.formGrouplabelBlue {
+    color: #195DFA;
+}
+
+.formGrouplabelRed {
+    color: #B32318;
+}
+
+.formGroup input {
+    width: 499px;
+    height: 48px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    padding-top: 12px;
+    padding-right: 12px;
+    padding-bottom: 12px;
+    padding-left: 12px;
+}
+
+/* Agregar borde rojo en caso de error */
+.formGroup input.error {
+    border: 1px solid var(--Error-Border-line-color, #B32318);
+}
+
+.formGroup input:focus {
+    border: 2px solid #195DFA;
+    box-shadow: 0px 1px 3.1px 0px #195DFA;
+    outline: none;
+}
+
+.formGroup select {
+    width: 499px;
+    height: 48px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* Borde rojo en caso de error */
+.formGroup select.error {
+    border: 1px solid var(--Error-Border-line-color, #B32318);
+}
+
+
+.layout-helptext {
+    width: 499px;
+    height: 12px;
+    margin-bottom: 5px;
+}
+
+.helptext {
+    color: #B32318;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    margin-bottom: 5px;
+    height: 16px;
+    letter-spacing: 0.5px;
+}
+
+.submitButton {
+    width: 499px;
+    height: 48px;
+    min-width: 140px;
+    border-radius: 8px;
+    gap: 8px;
+    padding: 8px 12px;
+    /* Versión compacta del padding */
+    background: #FF5C00;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.registro-redirect {
+    text-align: center;
+    margin-top: 16px;
+}
+
+.registro-redirect a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.registro-redirect a:hover {
+    text-decoration: underline;
+}
+
+
+.server-error {
+    color: red;
+    margin-top: 10px;
+}
+
+.error-message {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+.server-ok {
+    color: blue;
+    margin-top: 10px;
+}
+
+.ok-message {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    .desktop {
+        width: 40vh;
+        height: 606px;
+        justify-content: flex-start;
+        flex-direction: row;
+        padding: 0;
+    }
+
+
+    .content {
+        width: 430px;
+        height: 606px;
+        justify-content: flex-start;
+        flex-direction: row;
+        padding: 0;
+    }
+
+    .imageBlue {
+        background: linear-gradient(217.64deg, #006DFF -5.84%, #5038ED 106.73%);
+        width: 430px;
+        height: 606px;
+        background-size: cover;
+        /* This ensures the background scales correctly */
+        opacity: 6;
+        /* Set opacity to 6% */
+        background-repeat: no-repeat;
+        position: absolute;
+    }
+
+    .centeredImage {
+        width: 331px;
+        height: 438px;
+        top: 84px;
+        left: 50px;
+        border-radius: 24px;
+        position: absolute;
+    }
+
+    .thunder {
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    .ellipseOverlay {
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    .frame {
+        width: 398px;
+        height: 649px;
+        top: 756px;
+        left: 17px;
+        gap: 50px;
+    }
+
+    .samlaLogo {
+        width: 129px;
+        height: 32.45px;
+        top: 648px;
+        left: 150px;
+    }
+
+    .registroLabel {
+        width: 93px;
+        height: 19px;
+        top: 713px;
+        left: 169px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 32px;
+        letter-spacing: 0.25%;
+        position: absolute;
+    }
+
+    .formGroup input {
+        width: 394px;
+        height: 40px;
+        font-size: 16px;
+        /* Optional, add if you want to set font size */
+        padding: 10px;
+        /* Optional, add padding for better text visibility */
+        border: 1px solid #ccc;
+        /* Optional, add border for better styling */
+        border-radius: 8px;
+        /* Optional, adds rounded corners */
+        box-sizing: border-box;
+        /* Ensures padding and border are included in width/height */
+    }
+
+    .formGroup input:focus {
+        border-color: #006DFF;
+        /* Change the border color when focused */
+    }
+
+    .formGroup select {
+        width: 394px;
+        height: 40px;
+        font-size: 14px;
+        /* Reduce el tamaño de la fuente para pantallas más pequeñas */
+        padding: 10px 12px;
+        /* Ajusta el padding para que se vea bien en pantallas móviles */
+    }
+
+    .formGrouplabel {
+        font-size: 12px;
+        /* Reduce el tamaño de la fuente de la etiqueta en pantallas pequeñas */
+    }
+
+    .submitButton {
+        size: large;
+        width: 394px;
+        height: 48px;
+        min-width: 140px;
+        border-radius: 8px;
+        gap: 8px;
+        padding-top: 8px;
+        padding-right: 12px;
+        padding-bottom: 8px;
+        padding-left: 12px;
+        background: #FF5C00;
+    }
+}

@@ -1,0 +1,328 @@
+.desktop {
+    width: 1440px;
+    height: 1024px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    top: 299px;
+    left: 236px;
+    border-radius: 16px;
+    background: #FFFF;
+}
+
+
+.barra {
+    position: absolute;
+    /* Fija la barra dentro del .desktop */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Se asegura de que cubra todo el ancho */
+    height: 34px;
+    background:
+        url('/images/backgroudcolor.png') center/cover no-repeat,
+        linear-gradient(217.64deg, #006DFF -5.84%, #5038ED 106.73%);
+}
+
+
+.logo {
+    width: 129px;
+    height: 32.45px;
+    top: 229px;
+    left: 98px;
+    position: absolute;
+}
+
+.title {
+    width: 499px;
+    height: 19px;
+    top: 302px;
+    left: 98px;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0.25%;
+    color: #000000;
+    position: absolute
+}
+
+.frame {
+    width: 499px;
+    height: 359px;
+    top: 344px;
+    left: 98px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.formGroup {
+    width: 499px;
+    height: 11px;
+    gap: 127px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formGrouplabel {
+    width: 103px;
+    height: 11px;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.5%;
+}
+
+.layout-helptext {
+    width: 499px;
+    height: 12px;
+    margin-bottom: 5px;
+}
+
+.helptext {
+    color: #B32318;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    margin-bottom: 5px;
+    height: 16px;
+    letter-spacing: 0.5px;
+}
+
+.formGroup select {
+    width: 499px;
+    height: 48px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* Borde rojo en caso de error */
+.formGroup select.error {
+    border: 1px solid var(--Error-Border-line-color, #B32318);
+}
+
+.cancelButton {
+    width: 160px;
+    height: 48px;
+    min-width: 140px;
+    position: absolute;
+    top: 829px;
+    left: 967px;
+    border-radius: 8px;
+    /* Ajustar el valor según el diseño */
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--Secondary-button-Default-Background-color, #F2F4F7);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Roboto, sans-serif;
+}
+
+.submitButton {
+    width: 160px;
+    height: 48px;
+    min-width: 140px;
+    position: absolute;
+    top: 829px;
+    left: 1141px;
+    border-radius: 8px;
+    /* Ajustar el valor según el diseño */
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--Secondary-button-Default-Background-color, #FF5C00);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Roboto, sans-serif;
+}
+
+.left{
+    background-color:transparent;
+    pointer-events: none;
+    opacity: 0
+}
+
+.left-icon{
+    background-color:transparent;
+    pointer-events: none;
+    opacity: 0
+}
+
+.server-error {
+    color: red;
+    margin-top: 10px;
+}
+
+.error-message {
+    font-size: 14px;
+    font-weight: bold;
+    position: fixed;
+    top: 524px;         /* Espacio desde la parte superior */
+    right: 282px;       /* Espacio desde el borde derecho */
+    background: #e0ffe0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+.server-ok {
+    color: blue;
+    margin-top: 10px;
+}
+
+.ok-message {
+    font-size: 14px;
+    font-weight: bold;
+    position: fixed;
+    top: 524px;         /* Espacio desde la parte superior */
+    right: 282px;       /* Espacio desde el borde derecho */
+    background: #e0ffe0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .desktop {
+        width: 40vh;
+
+        justify-content: flex-start;
+        flex-direction: row;
+        padding: 0;
+    }
+
+    .barra {
+        width: 50vh;
+        /* Se ajusta automáticamente en pantallas grandes */
+        opacity: 1;
+        /* Recupera su opacidad normal */
+        position: fixed;
+    }
+
+    .logo {
+        width: 129px;
+        height: 27.56px;
+        top: 78px;
+        left: 157px;
+        position: absolute;
+    }
+
+    .title {
+        width: 398px;
+        height: 19px;
+        top: 167px;
+        left: 120px;
+        position: absolute;
+    }
+
+    .frame {
+        width: 398px;
+        height: 359px;
+        top: 209px;
+        left: 16px;
+        gap: 63px;
+    }
+
+    .formGrouplabel {
+        width: 79px;
+        height: 24px;
+        gap: 4px;
+    }
+
+    .formGroup {
+        width: 397px;
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .formGroup select {
+        width: 398px;
+        /* Ancho fijo para dispositivos móviles */
+        height: 48px;
+        /* Altura especificada */
+        border-radius: 8px;
+        /* Bordes redondeados */
+        border-width: 1px;
+        border: 1px solid var(--Default-Border-line-color, #98A2B3);
+        padding: 12px 12px 12px 16px;
+        /* Espaciado interno */
+    }
+
+    .cancelButton {
+        width: 372px;
+        height: 48px;
+        min-width: 140px;
+        top: 765px;
+        left: 32px;
+        gap: 8px;
+        padding-top: 8px;
+        padding-right: 12px;
+        padding-bottom: 8px;
+        padding-left: 12px;
+        background: var(--Secondary-button-Default-Background-color, #F2F4F7);
+        border-radius: var(--Border-radios-button, 8px);
+        /* Assuming you want a customizable border-radius */
+
+        /* Optional default status, size, type, and icon properties */
+        --status: "Default";
+        --size: "Large";
+        --type: "Secondary";
+        --show-right-icon: false;
+        --show-left-icon: false;
+    }
+
+    .submitButton {
+        width: 372px;
+        height: 48px;
+        min-width: 140px;
+        top: 700px;
+        left: 32px;
+        gap: 8px;
+        padding-top: 8px;
+        padding-right: 12px;
+        padding-bottom: 8px;
+        padding-left: 12px;
+        background: #FF5C00;
+        /* Primary color */
+        border-radius: var(--Border-radios-button, 8px);
+        /* Assuming you want a customizable border-radius */
+
+        /* Optional default status, size, type, and icon properties */
+        --status: "Default";
+        --size: "Large";
+        --type: "Primary";
+        --show-right-icon: false;
+        --show-left-icon: false;
+    }
+
+    .left{
+        width: 32px;
+        height: 32px;
+        top: 76px;
+        left: 24px;
+        position: absolute;
+        pointer-events: auto;
+        opacity: 1;
+    }
+
+    .left-icon{
+        width: 20.54px;
+        height: 15.08px;
+        top: 8.46px;
+        left: 5.73px;
+        position: absolute;
+        pointer-events: auto;
+        opacity: 1;
+    }
+}

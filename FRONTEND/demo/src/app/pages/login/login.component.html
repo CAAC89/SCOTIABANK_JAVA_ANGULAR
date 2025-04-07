@@ -1,0 +1,43 @@
+<div class="desktop">
+    <div class="imageBlue">
+        <img src="/images/home.png" class="centeredImage" alt="Imagen centrada">
+        <div class="ellipseOverlay">
+            <img src="/images/thunderbolt1.png" class="thunder" alt="thunder">
+        </div>
+    </div>
+    <div class="content">
+        <img src="/images/samla-logo.png" class="samlaLogo" alt="samlaLogo">
+        <label class="registroLabel">Login</label>
+        <div class="frame">
+            <form class="registroForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="formGroup">
+                    <label class="formGrouplabel" for="email">Correo</label>
+                    <input type="text" id="email" name="email" placeholder="ejemplo@gmail.com"
+                        formControlName="email" />
+                    <div class="layout-helptext"
+                        *ngIf="loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched">
+                        <p class="helptext">Debe escribir el Correo Electrónico</p>
+                    </div>
+                    <div class="layout-helptext"
+                        *ngIf="loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.touched">
+                        <p class="helptext">El correo electrónico no tiene un formato válido</p>
+                    </div>
+                </div>
+                <button type="submit" class="submitButton">Continuar</button>
+                <!-- Error de servidor -->
+                <div *ngIf="serverOk" class="server-ok">
+                    <p class="ok-message">{{ serverOk }}</p>
+                </div>
+                <!-- Error de servidor -->
+                <div *ngIf="serverError" class="server-error">
+                    <p class="error-message">{{ serverError }}</p>
+                </div>
+                <div class="registro-redirect">
+                    <p>¿No tienes una cuenta?
+                        <a [routerLink]="['/register']">Regístrate aquí</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
