@@ -16,7 +16,7 @@
     /* Fija la barra dentro del .desktop */
     top: 0;
     left: 0;
-    width: 100%;
+    width: 225vh;
     /* Se asegura de que cubra todo el ancho */
     height: 34px;
     background:
