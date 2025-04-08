@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { UserService } from '../../services/user/user.service';
 import { HousingService } from '../../services/housing/housing.service';
 import { Router } from '@angular/router';
 import { Usuario } from '../../models/usuario.model';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Housing } from '../../models/housing.model';
 
 @Component({
@@ -28,31 +28,42 @@ export class HistoryComponent implements OnInit {
   constructor(
     private housingService: HousingService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe({
-      next: (data) => {
-        this.usuarios = data;
-        console.log(data);
-        this.cargando = false;
-      },
-      error: (err) => {
-        console.error('Error al cargar usuarios', err);
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('token');
+      if (token) {
+        this.userService.getUsers(token).subscribe({
+          next: (data) => {
+            this.usuarios = data;
+            console.log(data);
+            this.cargando = false;
+          },
+          error: (err) => {
+            console.error('Error al cargar usuarios', err);
+            this.cargando = false;
+          }
+        });
+      } else {
+        console.warn('Token no disponible');
         this.cargando = false;
       }
-    });
+    }
   }
 
 
  
 
   logout(): void {
-    console.log('Logout ejecutado');
-    localStorage.removeItem('token');
-    localStorage.removeItem('userId');
-    this.router.navigate(['/']); // Ir al login
+    if (isPlatformBrowser(this.platformId)) {
+      console.log('Logout ejecutado');
+      localStorage.removeItem('token');
+      localStorage.removeItem('userId');
+      this.router.navigate(['/']);
+    }
   }
 
   openModal(usuario: any) {

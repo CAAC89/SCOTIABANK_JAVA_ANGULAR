@@ -39,10 +39,10 @@ export class UserService {
     return this.http.get(url, { headers });
   }
 
-  getUsers(): Observable<Usuario[]> {
+  getUsers(token:string): Observable<Usuario[]> {
     let headers = new HttpHeaders();
-    if (localStorage.getItem('token')) {
-      headers = headers.set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
     } else {
       console.warn('Token is null, not setting Authorization header');
     }
