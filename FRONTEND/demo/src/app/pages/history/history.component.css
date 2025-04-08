@@ -317,9 +317,9 @@ table {
 
 /* Contenedor de la paginación */
 .pagination-container {
-    position: absolute;
-    right: 0vh;
-    margin-top: 30vh;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
 }
 
 
@@ -515,8 +515,9 @@ table {
     }
 
     .pagination-container {
-        margin-top: 70vh;
-        position: absolute;
+        width: 0px;
+        height: 46px;
+        margin-top:400px;
     }
 
     .pagination-button,
