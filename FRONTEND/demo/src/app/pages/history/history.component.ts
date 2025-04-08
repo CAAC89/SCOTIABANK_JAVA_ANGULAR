@@ -51,6 +51,10 @@ export class HistoryComponent implements OnInit {
         console.warn('Token no disponible');
         this.cargando = false;
       }
+    }else{
+      if (typeof window !== 'undefined') {
+        window.location.reload();
+      }
     }
   }
 
